@@ -1,7 +1,7 @@
 require("dotenv").config();
 require("express-async-errors");
 
-const accessLogMiddleware = require("./middlewares/logger.middleware");
+// const accessLogMiddleware = require("./middlewares/logger.middleware");
 const routes = require("./routes/api");
 
 const express = require("express");
@@ -13,7 +13,7 @@ app.use("/static", express.static(__dirname + "/public"));
 app.use(express.json());
 
 // Req and Res logger.
-app.use(accessLogMiddleware);
+// app.use(accessLogMiddleware);
 
 app.use("/", routes);
 
