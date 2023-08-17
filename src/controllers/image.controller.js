@@ -36,14 +36,15 @@ exports.gerarImagem = async (req, res) => {
     let minutes = Math.floor(musicDuration / 60);
     let seconds = musicDuration - minutes * 60;
     // formart time 00:00
-    musicDuration = `${minutes}:${seconds}`;
+    console.log(seconds);
     // add 0 if seconds < 10 ex: 00:09
-    if (seconds < 10) {
-      musicDuration = `${minutes}:0${seconds}`;
-    }
     if (minutes < 10) {
-      musicDuration = `0${minutes}:${seconds}`;
+      minutes = `0${minutes}`;
     }
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+    musicDuration = `${minutes}:${seconds}`;
   }
 
   const imgHTML = `
@@ -51,8 +52,8 @@ exports.gerarImagem = async (req, res) => {
   <head>
     <style>
       body {
-        width: 1920px;
-        height: 1080px;
+        width: 1280px;
+        height: 720px;
         margin: 0px;
       }
     </style>
@@ -67,32 +68,32 @@ exports.gerarImagem = async (req, res) => {
     <image
       style="position: absolute"
       src="https://cdn.discordapp.com/attachments/1131702965586116719/1141520923703390288/Player_modelo.png"
-      width="1920"
-      height="1080"
+      width="1280"
+      height="720"
     />
     <div
       style="
         position: absolute;
-        top: 203px;
-        left: 203px;
-        border-radius: 9px;
-        width: 670px;
-        height: 676px;
+        top: 135px;
+        left: 135px;
+        border-radius: 6px;
+        width: 447px;
+        height: 451px;
         background-image: url(${musicPlayerURL});
         background-position: center;
         background-size: cover;
       "
     ></div>
     <image
-      style="position: absolute; left: 1664px; top: 66px; border-radius: 9999px"
+      style="position: absolute; left: 1109px; top: 44px; border-radius: 9999px"
       src="${discordUserAvatar}"
-      width="190"
-      height="190"
+      width="127"
+      height="127"
     />
     <div
       style="
-        left: 988px;
-        top: 435px;
+        left: 649px;
+        top: 297px;
         position: absolute;
         display: flex;
         flex-direction: column;
@@ -100,21 +101,21 @@ exports.gerarImagem = async (req, res) => {
         font-family: Poppins, sans-serif;
       "
     >
-      <h1 style="font-size: 60px; margin-bottom: 0px; max-width: 800px">
-        ${musicName}
-      </h1>
+      <h2 style="font-size: 44px; margin: 0px; max-width: 533px">
+        ${musicName.slice(0, 60) + (musicName.length > 60 ? "..." : "")}
+      </h2>
       <h2
         style="
-          font-size: 40px;
+          font-size: 27px;
           font-weight: 100;
-          margin-top: 10px;
           margin-bottom: 0px;
-          max-width: 800px;
+          margin-top: 0px
+          max-width: 533px;
         "
       >
         ${musicAuthor}
       </h2>
-      <h3 style="font-size: 65px; font-weight: 600; margin-top: 0px">${musicDuration}</h3>
+      <h3 style="font-size: 40px; font-weight: 600; margin-top: 2px">${musicDuration}</h3>
     </div>
   </body>
 </html>
@@ -131,8 +132,8 @@ exports.gerarImagem = async (req, res) => {
   });
   const page = await browser.newPage();
   await page.setViewport({
-    width: 1920,
-    height: 1080,
+    width: 1280,
+    height: 720,
     deviceScaleFactor: 1,
   });
   await page.setContent(imgHTML);
