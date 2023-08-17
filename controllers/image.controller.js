@@ -33,7 +33,7 @@ exports.gerarImagem = async (req, res) => {
 
   // fetch deezer api
   let musicInfo = await fetch(
-    "https://api.deezer.com/search/track?q=" + musicName
+    `https://api.deezer.com/search/track?q=${musicName}`
   );
   musicInfo = await musicInfo.json();
 
@@ -43,7 +43,7 @@ exports.gerarImagem = async (req, res) => {
   musicPlayerURL = musicInfo?.data[0]?.album?.cover_big || musicPlayerURL;
 
   await nodeHtmlToImage({
-    output: "./public/image.jpg",
+    output: "./public/image.png",
     html: `
         <html><head><style>body {width: 1920px;height: 1080px;}</style></head><body><image style="position: absolute"  src="https://cdn.discordapp.com/attachments/1131702965586116719/1141520923703390288/Player_modelo.png"  width="1920"  height="1080"/>
         <image
