@@ -86,7 +86,7 @@ exports.gerarImagem = async (req, res) => {
     deviceScaleFactor: 1,
   });
   await page.setContent(imgHTML);
-  await page.screenshot({ path: "./public/image.png" });
+  await page.screenshot({ path: "public/image.png" });
   await browser.close();
 
   // await nodeHtmlToImage({
