@@ -9,6 +9,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "chrome-aws-lambda": "^9.1.0",
     "commander": "^11.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -17,7 +18,8 @@
     "express-validator": "^7.0.1",
     "loading-cli": "^1.1.0",
     "node-fetch": "^2.6.12",
-    "node-html-to-image": "^4.0.0"
+    "node-html-to-image": "^4.0.0",
+    "puppeteer-core": "^21.0.3"
   },
   "devDependencies": {
     "husky": "^8.0.0",

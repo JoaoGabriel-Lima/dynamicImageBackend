@@ -1,6 +1,8 @@
 const { successResponse } = require("../helpers/methods");
-const nodeHtmlToImage = require("node-html-to-image");
 const fetch = require("node-fetch");
+const chrome = require("chrome-aws-lambda");
+const nodeHtmlToImage = require("node-html-to-image");
+const puppeteerCore = require("puppeteer-core");
 
 /**
  *
