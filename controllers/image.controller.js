@@ -90,7 +90,7 @@ exports.gerarImagem = async (req, res) => {
         discordUserAvatar ||
         "https://i.scdn.co/image/ab6761610000e5eba03696716c9ee605006047fd",
     },
-  }).then(() => console.log("The image was created successfully!"));
+  });
 
   // send image as response
   res.send(
