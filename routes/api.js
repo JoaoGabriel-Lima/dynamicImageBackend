@@ -11,6 +11,6 @@ const {
 router.get("/", IndexController.index);
 router.post("/", validate(indexValidator), IndexController.indexPost);
 
-router.get("/gerar-imagem", ImageController.gerarImagem);
+router.post("/gerar-imagem", ImageController.gerarImagem);
 
 module.exports = router;
