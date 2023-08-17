@@ -44,8 +44,8 @@ exports.gerarImagem = async (req, res) => {
   musicDuration = musicInfo?.data[0]?.duration || musicDuration;
   musicPlayerURL = musicInfo?.data[0]?.album?.cover_big || musicPlayerURL;
 
-  await nodeHtmlToImage({
-    output: "./public/image.png",
+  nodeHtmlToImage({
+    output: "./public/image.jpg",
     html: `
         <html><head><style>body {width: 1920px;height: 1080px;}</style></head><body><image style="position: absolute"  src="https://cdn.discordapp.com/attachments/1131702965586116719/1141520923703390288/Player_modelo.png"  width="1920"  height="1080"/>
         <image
@@ -92,7 +92,7 @@ exports.gerarImagem = async (req, res) => {
         discordUserAvatar ||
         "https://i.scdn.co/image/ab6761610000e5eba03696716c9ee605006047fd",
     },
-  });
+  }).then(() => console.log("The image was created successfully!"));
 
   // send image as response
   res.send(
