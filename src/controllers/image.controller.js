@@ -1,5 +1,6 @@
 const axios = require("axios");
 const puppeteer = require("puppeteer");
+require("dotenv").config();
 
 exports.gerarImagem = async (req, res) => {
   let {
@@ -72,6 +73,11 @@ exports.gerarImagem = async (req, res) => {
 
   const browser = await puppeteer.launch({
     headless: "new",
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
   await page.setViewport({
