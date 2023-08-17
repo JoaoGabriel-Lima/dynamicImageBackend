@@ -23,6 +23,9 @@ app.get("/", async (req, res, next) => {
   res.send({ message: "Awesome it works 🐻" });
 });
 
+// app.use("/static", express.static(__dirname + "/public"));
+
+app.use(express.static("public"));
 app.use("/api", require("./routes/api.route"));
 app.use((req, res, next) => {
   next(createError.NotFound());
@@ -35,8 +38,6 @@ app.use((err, req, res, next) => {
     message: err.message,
   });
 });
-
-app.use("/static", express.static(__dirname + "/public"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 @ http://localhost:${PORT}`));
