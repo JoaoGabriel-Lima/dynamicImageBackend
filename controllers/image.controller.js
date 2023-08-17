@@ -1,5 +1,6 @@
 const { successResponse } = require("../helpers/methods");
 const nodeHtmlToImage = require("node-html-to-image");
+const axios = require("axios");
 
 /**
  *
@@ -31,10 +32,12 @@ exports.gerarImagem = async (req, res) => {
   } = req.body;
 
   // fetch deezer api
-  let musicInfo = await fetch(
+  let musicInfo = await axios.get(
     `https://api.deezer.com/search/track?q=${musicName}`
   );
-  musicInfo = await musicInfo.json();
+
+  //   musicInfo = await musicInfo.json();
+  musicInfo = musicInfo?.data;
 
   musicName = musicInfo?.data[0]?.title || musicName;
   musicAuthor = musicInfo?.data[0]?.artist?.name || musicAuthor;
