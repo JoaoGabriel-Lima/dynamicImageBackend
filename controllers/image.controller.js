@@ -1,5 +1,6 @@
 const { successResponse } = require("../helpers/methods");
 const nodeHtmlToImage = require("node-html-to-image");
+const fetch = require("node-fetch");
 
 /**
  *
