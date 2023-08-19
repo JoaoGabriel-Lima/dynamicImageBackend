@@ -105,7 +105,7 @@ exports.gerarImagem = async (req, res) => {
       "
     >
       <h2 style="font-size: 44px; margin: 0px; max-width: 533px">
-        ${musicName.slice(0, 60) + (musicName.length > 50 ? "..." : "")}
+        ${musicName.slice(0, 45) + (musicName.length > 45 ? "..." : "")}
       </h2>
       <h2
         style="
