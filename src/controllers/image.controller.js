@@ -11,6 +11,7 @@ exports.gerarImagem = async (req, res) => {
     discordUserAvatar,
   } = req.body;
 
+  musicName = musicName.replace(/\[[^\]]*\]/g, "");
   musicName = musicName.replace(/\([^()]*\)/g, "");
   musicName = musicName.replace(/- /g, "");
   musicName = musicName.trim();
@@ -102,7 +103,7 @@ exports.gerarImagem = async (req, res) => {
       "
     >
       <h2 style="font-size: 44px; margin: 0px; max-width: 533px">
-        ${musicName.slice(0, 60) + (musicName.length > 60 ? "..." : "")}
+        ${musicName.slice(0, 60) + (musicName.length > 50 ? "..." : "")}
       </h2>
       <h2
         style="
