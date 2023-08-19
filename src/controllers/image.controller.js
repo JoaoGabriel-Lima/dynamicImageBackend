@@ -14,7 +14,7 @@ exports.gerarImagem = async (req, res) => {
   musicName = musicName.replace(/\[[^\]]*\]/g, "");
   musicName = musicName.replace(/\([^()]*\)/g, "");
   musicName = musicName.replace(/- /g, "");
-  musicName = musicName.replace(/(ft.|feat.).*/g, "");
+  musicName = musicName.replace(/( ft.| feat.| Feat.).*/g, "");
 
   musicName = musicName.trim();
   // fetch deezer api
